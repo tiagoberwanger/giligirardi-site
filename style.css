@@ -1,0 +1,293 @@
+:root {
+    color-scheme: light;
+    --papel: #f2ede3;
+    --tinta: #1f1d2b;
+    --tinta-suave: #5a5568;
+    --violeta: #5b4f8c;
+    --lavanda: #a597cf;
+    --lavanda-clara: #cfc3f2;
+    /* Lado do quadro da nebulosa; a roda ocupa 82% dele */
+    --tamanho: min(112vw, 78svh, 860px);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    overflow-x: clip;
+    scroll-behavior: smooth;
+    background: var(--papel);
+}
+
+body {
+    margin: 0;
+    color: var(--tinta);
+    font-family: "Open Sans", system-ui, sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    text-align: center;
+}
+
+/* Primeira tela: roda, lua e nome */
+.abertura {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    min-height: 100svh;
+    padding: 24px 16px 80px;
+    animation: surgir 1.4s ease-out both;
+}
+
+.mapa {
+    position: relative;
+    flex: none;
+    width: var(--tamanho);
+    height: var(--tamanho);
+}
+
+.nebulosa,
+#ceu {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    pointer-events: none;
+}
+
+.roda {
+    position: absolute;
+    inset: 9%;
+    width: 82%;
+    height: 82%;
+    color: var(--violeta);
+    opacity: 0.5;
+    pointer-events: none;
+    animation: girar 360s linear infinite;
+}
+
+.roda text {
+    font-family: "Noto Sans Symbols", "Apple Symbols", "Segoe UI Symbol", sans-serif;
+    font-size: 20px;
+}
+
+h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: 0;
+    transform: translate(-50%, -50%);
+    color: var(--papel);
+    font-family: "Gilda Display", Georgia, serif;
+    font-size: calc(var(--tamanho) * 0.078);
+    font-weight: 400;
+    line-height: 1.04;
+    white-space: nowrap;
+    filter: drop-shadow(0 1px 12px rgba(36, 32, 63, 0.6));
+}
+
+@supports (background-clip: text) or (-webkit-background-clip: text) {
+    .brilho {
+        background: linear-gradient(100deg,
+            var(--papel) 0%,
+            var(--papel) 40%,
+            var(--lavanda-clara) 46%,
+            #ffffff 50%,
+            var(--lavanda-clara) 54%,
+            var(--papel) 60%,
+            var(--papel) 100%);
+        background-size: 250% 100%;
+        background-position: 100% 0;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        animation: brilho 6s ease-in-out infinite;
+    }
+}
+
+.nome {
+    margin: calc(var(--tamanho) * -0.03) 0 0;
+    font-family: "Gilda Display", Georgia, serif;
+    font-size: clamp(1.5rem, calc(var(--tamanho) * 0.055), 2.4rem);
+    line-height: 1.2;
+}
+
+/* Estrelinhas no lugar dos pingos dos "i", como no cartão */
+.pingo {
+    position: relative;
+}
+
+.pingo::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: -0.04em;
+    width: 0.3em;
+    height: 0.3em;
+    transform: translateX(-50%);
+    background: currentColor;
+    clip-path: polygon(50% 0, 59% 41%, 100% 50%, 59% 59%, 50% 100%, 41% 59%, 0 50%, 41% 41%);
+}
+
+.descer {
+    position: absolute;
+    bottom: max(16px, env(safe-area-inset-bottom));
+    left: 50%;
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    margin-left: -24px;
+    color: var(--violeta);
+    border-radius: 50%;
+    animation: boiar 2.4s ease-in-out infinite;
+}
+
+.descer svg {
+    width: 26px;
+    height: 26px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* Descrição e contatos */
+.sobre {
+    max-width: 26rem;
+    margin: 0 auto;
+    padding: 48px 24px max(64px, calc(env(safe-area-inset-bottom) + 32px));
+}
+
+.funcao {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.divisa {
+    position: relative;
+    display: block;
+    width: 10.5rem;
+    height: 1px;
+    margin: 1rem auto;
+    background: var(--lavanda);
+}
+
+.divisa::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: -1.5px;
+    width: 4px;
+    height: 4px;
+    margin-left: -2px;
+    border-radius: 50%;
+    background: var(--violeta);
+}
+
+.servicos {
+    margin: 0;
+    font-size: 1.05rem;
+}
+
+.aviso {
+    margin: 2.25rem 0 0;
+    color: var(--tinta-suave);
+    font-size: 0.95rem;
+}
+
+.contatos {
+    display: grid;
+    gap: 0.75rem;
+    max-width: 20rem;
+    margin: 1.25rem auto 0;
+    padding: 0;
+    list-style: none;
+}
+
+.contatos a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    min-height: 3.25rem;
+    padding: 0.7rem 1.25rem;
+    border: 1px solid var(--lavanda);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.35);
+    color: var(--tinta);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.contatos a:hover {
+    border-color: var(--violeta);
+    color: var(--violeta);
+}
+
+.contatos a:focus-visible,
+.descer:focus-visible {
+    outline: 2px solid var(--violeta);
+    outline-offset: 3px;
+}
+
+.contatos svg {
+    flex: none;
+    width: 1.4rem;
+    height: 1.4rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.so-leitor {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+@keyframes brilho {
+    0% { background-position: 100% 0; }
+    55%, 100% { background-position: 0 0; }
+}
+
+@keyframes girar {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes boiar {
+    50% { transform: translateY(6px); }
+}
+
+@keyframes surgir {
+    from { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .abertura,
+    .roda,
+    .descer,
+    .brilho {
+        animation: none;
+    }
+
+    .brilho {
+        background: none;
+        color: var(--papel);
+    }
+}
