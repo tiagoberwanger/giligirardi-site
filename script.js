@@ -1,53 +1,14 @@
-// Roda zodiacal: 12 signos no sentido anti-horário a partir de Áries (à esquerda), como num mapa astral
-(function desenharRoda() {
-    const roda = document.querySelector('.roda');
-    const centro = 300;
-    const externo = 290;
-    const interno = 245;
-    const ponto = (raio, graus) => {
-        const angulo = (180 + graus) * Math.PI / 180;
-        return [centro + raio * Math.cos(angulo), centro - raio * Math.sin(angulo)];
-    };
-    const linha = (r1, r2, graus) => {
-        const [x1, y1] = ponto(r1, graus);
-        const [x2, y2] = ponto(r2, graus);
-        return `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" vector-effect="non-scaling-stroke" />`;
-    };
-
-    let tracos = '';
-    for (let graus = 0; graus < 360; graus += 5) {
-        if (graus % 30 === 0) {
-            tracos += linha(interno, externo, graus);
-        } else {
-            tracos += linha(interno, interno - (graus % 10 === 0 ? 9 : 5), graus);
-        }
-    }
-
-    let signos = '';
-    for (let i = 0; i < 12; i++) {
-        const [x, y] = ponto((externo + interno) / 2, i * 30 + 15);
-        // ︎ força a versão em texto do glifo (evita virar emoji no celular)
-        const glifo = String.fromCodePoint(0x2648 + i) + '︎';
-        signos += `<text x="${x}" y="${y}" text-anchor="middle" dominant-baseline="central">${glifo}</text>`;
-    }
-
-    roda.innerHTML = `
-        <g fill="none" stroke="currentColor" stroke-width="1">
-            <circle cx="${centro}" cy="${centro}" r="${externo}" vector-effect="non-scaling-stroke" />
-            <circle cx="${centro}" cy="${centro}" r="${interno}" vector-effect="non-scaling-stroke" />
-            ${tracos}
-        </g>
-        <g fill="currentColor">${signos}</g>`;
-})();
-
-// Estrelas cintilando no miolo escuro da nebulosa e uma estrela cadente de vez em quando
+// Estrelas cintilando e cometas cruzando todo o céu noturno (Opção 1)
 (function animarCeu() {
-    const mapa = document.querySelector('.mapa');
+    const abertura = document.querySelector('.abertura');
     const ceu = document.getElementById('ceu');
+    if (!abertura || !ceu) return;
+
     const ctx = ceu.getContext('2d');
     const calmo = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-    let tamanho = 0;
+    let largura = 0;
+    let altura = 0;
     let estrelas = [];
     let cadente = null;
     let proximaCadente = 2;
@@ -55,36 +16,40 @@
 
     function popular() {
         const dpr = Math.min(window.devicePixelRatio || 1, 2);
-        tamanho = mapa.clientWidth;
-        ceu.width = tamanho * dpr;
-        ceu.height = tamanho * dpr;
+        largura = abertura.clientWidth;
+        altura = abertura.clientHeight;
+        ceu.width = largura * dpr;
+        ceu.height = altura * dpr;
         ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-        const centro = tamanho / 2;
-        const total = Math.round(tamanho / 9);
+        // Estrelas distribuídas por toda a extensão do céu noturno
+        const total = Math.max(120, Math.round((largura * altura) / 5500));
         estrelas = [];
-        while (estrelas.length < total) {
-            const angulo = Math.random() * Math.PI * 2;
-            const distancia = Math.sqrt(Math.random()) * tamanho * 0.36;
-            const dx = Math.cos(angulo) * distancia;
-            const dy = Math.sin(angulo) * distancia;
-            // Deixa livre o retângulo do título
-            if (Math.abs(dx) < tamanho * 0.2 && Math.abs(dy) < tamanho * 0.12) {
-                continue;
-            }
+        const centroX = largura / 2;
+        const centroY = altura / 2;
+
+        for (let i = 0; i < total; i++) {
+            const x = Math.random() * largura;
+            const y = Math.random() * altura;
+
+            // Mantém área direta do título com estrelas menores para não competir com a leitura
+            const dx = Math.abs(x - centroX);
+            const dy = Math.abs(y - centroY);
+            const noTitulo = dx < largura * 0.22 && dy < altura * 0.12;
+
             estrelas.push({
-                x: centro + dx,
-                y: centro + dy,
-                raio: Math.pow(Math.random(), 4) * 1.5 + 0.35,
+                x,
+                y,
+                raio: (noTitulo ? 0.6 : 1) * (Math.pow(Math.random(), 3.5) * 1.6 + 0.35),
                 fase: Math.random() * Math.PI * 2,
                 ritmo: 0.4 + Math.random() * 1.6,
-                cor: Math.random() < 0.3 ? '#e4dcff' : '#ffffff',
+                cor: Math.random() < 0.35 ? '#dcd2fc' : (Math.random() < 0.2 ? '#fff7eb' : '#ffffff'),
             });
         }
     }
 
     function desenharEstrela(estrela, t) {
-        const alfa = 0.3 + 0.7 * Math.sin(t * estrela.ritmo + estrela.fase) ** 2;
+        const alfa = 0.25 + 0.75 * Math.sin(t * estrela.ritmo + estrela.fase) ** 2;
         ctx.globalAlpha = alfa;
         ctx.fillStyle = estrela.cor;
         ctx.beginPath();
@@ -93,7 +58,7 @@
 
         // As maiores ganham um brilho em cruz
         if (estrela.raio > 1.25) {
-            const braco = estrela.raio * 4 * alfa;
+            const braco = estrela.raio * 4.2 * alfa;
             ctx.strokeStyle = estrela.cor;
             ctx.lineWidth = 0.6;
             ctx.beginPath();
@@ -105,18 +70,18 @@
         }
     }
 
-    // Cruza a parte de cima da lua, acima do título
+    // Cometa cruzando amplamente o céu da esquerda ou da direita
     function lancarCadente(t) {
         const sentido = Math.random() < 0.5 ? 1 : -1;
-        const angulo = Math.PI * (0.08 + Math.random() * 0.08);
+        const angulo = Math.PI * (0.07 + Math.random() * 0.08);
         cadente = {
-            x: tamanho * (0.5 - sentido * (0.1 + Math.random() * 0.08)),
-            y: tamanho * (0.24 + Math.random() * 0.06),
+            x: largura * (sentido > 0 ? (0.05 + Math.random() * 0.25) : (0.95 - Math.random() * 0.25)),
+            y: altura * (0.08 + Math.random() * 0.22),
             dx: Math.cos(angulo) * sentido,
             dy: Math.sin(angulo),
             inicio: t,
-            duracao: 0.8,
-            percurso: tamanho * 0.3,
+            duracao: 0.9,
+            percurso: Math.max(largura, altura) * 0.4,
         };
     }
 
@@ -124,21 +89,22 @@
         const progresso = (t - cadente.inicio) / cadente.duracao;
         if (progresso >= 1) {
             cadente = null;
-            proximaCadente = t + 6 + Math.random() * 10;
+            proximaCadente = t + 4.5 + Math.random() * 7;
             return;
         }
         const cabecaX = cadente.x + cadente.dx * cadente.percurso * progresso;
         const cabecaY = cadente.y + cadente.dy * cadente.percurso * progresso;
-        const cauda = tamanho * 0.12 * Math.sin(Math.PI * progresso);
+        const cauda = cadente.percurso * 0.38 * Math.sin(Math.PI * progresso);
         const caudaX = cabecaX - cadente.dx * cauda;
         const caudaY = cabecaY - cadente.dy * cauda;
 
         const rastro = ctx.createLinearGradient(cabecaX, cabecaY, caudaX, caudaY);
-        rastro.addColorStop(0, 'rgba(255, 255, 255, 0.95)');
-        rastro.addColorStop(1, 'rgba(255, 255, 255, 0)');
+        rastro.addColorStop(0, 'rgba(255, 255, 255, 0.98)');
+        rastro.addColorStop(0.3, 'rgba(225, 215, 255, 0.7)');
+        rastro.addColorStop(1, 'rgba(225, 215, 255, 0)');
         ctx.globalAlpha = Math.sin(Math.PI * progresso);
         ctx.strokeStyle = rastro;
-        ctx.lineWidth = 1.2;
+        ctx.lineWidth = 1.4;
         ctx.lineCap = 'round';
         ctx.beginPath();
         ctx.moveTo(cabecaX, cabecaY);
@@ -147,7 +113,7 @@
     }
 
     function desenharCeu(t) {
-        ctx.clearRect(0, 0, tamanho, tamanho);
+        ctx.clearRect(0, 0, largura, altura);
         for (const estrela of estrelas) {
             desenharEstrela(estrela, t);
         }
@@ -169,10 +135,9 @@
         requestAnimationFrame(quadro);
     }
 
-    // Não anima enquanto a roda está fora da tela
     new IntersectionObserver(([entrada]) => {
         visivel = entrada.isIntersecting;
-    }).observe(mapa);
+    }).observe(abertura);
 
     let espera;
     new ResizeObserver(() => {
@@ -181,12 +146,28 @@
             cadente = null;
             popular();
             desenharCeu(0);
-        }, 150);
-    }).observe(mapa);
+        }, 120);
+    }).observe(abertura);
 
     popular();
     desenharCeu(0);
     if (!calmo.matches) {
         requestAnimationFrame(quadro);
     }
+})();
+
+// Acordeão exclusivo para Perguntas Frequentes
+(function iniciarFaq() {
+    const itens = document.querySelectorAll('.faq-item');
+    itens.forEach(item => {
+        item.addEventListener('toggle', () => {
+            if (item.open) {
+                itens.forEach(outro => {
+                    if (outro !== item && outro.open) {
+                        outro.open = false;
+                    }
+                });
+            }
+        });
+    });
 })();

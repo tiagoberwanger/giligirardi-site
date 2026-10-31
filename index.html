@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>A Semente Estelar | Gili Girardi</title>
-    <meta name="description" content="A Semente Estelar: Gili Girardi, terapeuta holística. Astrologia, tarot e radiestesia.">
+    <title>Gili Girardi</title>
+    <meta name="description" content="Gili Girardi, terapeuta holística. Astrologia, tarot, radiestesia e reiki.">
     <meta name="theme-color" content="#F7F2EA">
     <link rel="icon" href="favicon.png" sizes="32x32">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -12,68 +12,437 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    <!-- Só os 12 glifos do zodíaco (♈–♓), para não carregar a fonte inteira -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Symbols&text=%E2%99%88%E2%99%89%E2%99%8A%E2%99%8B%E2%99%8C%E2%99%8D%E2%99%8E%E2%99%8F%E2%99%90%E2%99%91%E2%99%92%E2%99%93&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
 <body>
     <header class="abertura">
-        <div class="mapa">
-            <svg class="nebulosa" viewBox="0 0 1000 1000" aria-hidden="true">
+        <div class="abertura-ceu" aria-hidden="true">
+            <svg class="nebulosa" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
                 <defs>
                     <filter id="aquarela" x="-20%" y="-20%" width="140%" height="140%">
-                        <feTurbulence type="fractalNoise" baseFrequency="0.006" numOctaves="3" seed="4" result="ruido" />
-                        <feDisplacementMap in="SourceGraphic" in2="ruido" scale="140" xChannelSelector="R" yChannelSelector="G" result="borrado" />
-                        <feGaussianBlur in="borrado" stdDeviation="14" />
+                        <feTurbulence type="fractalNoise" baseFrequency="0.005" numOctaves="3" seed="4" result="ruido" />
+                        <feDisplacementMap in="SourceGraphic" in2="ruido" scale="160" xChannelSelector="R" yChannelSelector="G" result="borrado" />
+                        <feGaussianBlur in="borrado" stdDeviation="15" />
                     </filter>
                     <filter id="halo-lua" x="-20%" y="-20%" width="140%" height="140%">
-                        <feGaussianBlur stdDeviation="9" />
+                        <feGaussianBlur stdDeviation="10" />
                     </filter>
                     <radialGradient id="halo">
-                        <stop offset="0%" stop-color="#8f84c4" />
-                        <stop offset="55%" stop-color="#b5a9db" stop-opacity="0.75" />
-                        <stop offset="80%" stop-color="#ecd3c9" stop-opacity="0.5" />
-                        <stop offset="100%" stop-color="#F7F2EA" stop-opacity="0" />
+                        <stop offset="0%" stop-color="#6b5c9e" stop-opacity="0.8" />
+                        <stop offset="45%" stop-color="#4d407a" stop-opacity="0.6" />
+                        <stop offset="70%" stop-color="#342b57" stop-opacity="0.4" />
+                        <stop offset="100%" stop-color="#161229" stop-opacity="0" />
                     </radialGradient>
                     <radialGradient id="nucleo">
-                        <stop offset="0%" stop-color="#24203f" />
-                        <stop offset="50%" stop-color="#2b2750" />
-                        <stop offset="75%" stop-color="#4b4380" stop-opacity="0.85" />
-                        <stop offset="100%" stop-color="#6f64a8" stop-opacity="0" />
+                        <stop offset="0%" stop-color="#1c1833" />
+                        <stop offset="40%" stop-color="#241e42" />
+                        <stop offset="70%" stop-color="#2d244f" stop-opacity="0.9" />
+                        <stop offset="100%" stop-color="#1f1938" stop-opacity="0.2" />
                     </radialGradient>
                     <radialGradient id="nuvem">
-                        <stop offset="0%" stop-color="#a597cf" stop-opacity="0.6" />
-                        <stop offset="100%" stop-color="#a597cf" stop-opacity="0" />
+                        <stop offset="0%" stop-color="#8a7cb8" stop-opacity="0.75" />
+                        <stop offset="100%" stop-color="#8a7cb8" stop-opacity="0" />
                     </radialGradient>
                     <radialGradient id="nuvem-pessego">
-                        <stop offset="0%" stop-color="#ecd3c9" stop-opacity="0.7" />
+                        <stop offset="0%" stop-color="#ecd3c9" stop-opacity="0.8" />
                         <stop offset="100%" stop-color="#ecd3c9" stop-opacity="0" />
                     </radialGradient>
                     <!-- Lua crescente: disco claro menos o mesmo disco deslocado -->
                     <mask id="crescente">
-                        <circle cx="500" cy="500" r="300" fill="#fff" />
-                        <circle cx="508" cy="492" r="300" fill="#000" />
+                        <circle cx="800" cy="500" r="320" fill="#fff" />
+                        <circle cx="810" cy="490" r="320" fill="#000" />
                     </mask>
                 </defs>
                 <g filter="url(#aquarela)">
-                    <circle cx="460" cy="520" r="440" fill="url(#halo)" />
-                    <ellipse cx="290" cy="310" rx="190" ry="130" fill="url(#nuvem)" />
-                    <ellipse cx="620" cy="810" rx="220" ry="140" fill="url(#nuvem-pessego)" />
-                    <circle cx="490" cy="510" r="330" fill="url(#nucleo)" />
+                    <!-- Halo de aquarela expandido -->
+                    <ellipse cx="800" cy="500" rx="760" ry="470" fill="url(#halo)" />
+                    <!-- Nuvens orgânicas fluindo pelas diagonais -->
+                    <ellipse cx="480" cy="320" rx="440" ry="260" fill="url(#nuvem)" />
+                    <ellipse cx="1120" cy="680" rx="460" ry="280" fill="url(#nuvem-pessego)" />
+                    <!-- Núcleo cósmico profundo amplo -->
+                    <ellipse cx="800" cy="500" rx="600" ry="380" fill="url(#nucleo)" />
                 </g>
                 <g mask="url(#crescente)">
-                    <rect width="1000" height="1000" fill="#d9cff0" filter="url(#halo-lua)" />
+                    <rect width="1600" height="1000" fill="#d9cff0" filter="url(#halo-lua)" />
                 </g>
-                <circle cx="500" cy="500" r="300" fill="none" stroke="#f4effa" stroke-width="2" stroke-opacity="0.85" mask="url(#crescente)" />
+                <circle cx="800" cy="500" r="320" fill="none" stroke="#f4effa" stroke-width="2.5" stroke-opacity="0.85" mask="url(#crescente)" />
             </svg>
-            <svg class="roda" viewBox="0 0 600 600" aria-hidden="true"></svg>
             <canvas id="ceu" aria-hidden="true"></canvas>
+        </div>
+
+        <div class="abertura-conteudo">
             <h1 class="brilho">
                 <span class="so-leitor">Gili Girardi</span>
                 <span aria-hidden="true">G<span class="pingo">ı</span>l<span class="pingo">ı</span><br>G<span class="pingo">ı</span>rard<span class="pingo">ı</span></span>
             </h1>
+            <p class="abertura-subtitulo">Terapeuta Holística</p>
+            <p class="abertura-servicos">astrologia - tarot - radiestesia - reiki</p>
         </div>
+
+        <a class="descer" href="#sobre" aria-label="Rolar para a seção sobre">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg>
+        </a>
     </header>
+
+    <!-- Transição suave entre Abertura e Sobre -->
+    <div class="divisao-secao divisao-de-noite" aria-hidden="true">
+        <svg class="divisao-curva" viewBox="0 0 1440 60" preserveAspectRatio="none">
+            <path d="M0,0 C480,48 960,48 1440,0 L1440,60 L0,60 Z" fill="#B8AFC2"></path>
+        </svg>
+    </div>
+
+    <!-- Seção Sobre com fundo lavanda (#B8AFC2) apenas com foto e descrição -->
+    <section id="sobre" class="secao-sobre">
+        <div class="sobre-container">
+            <div class="sobre-foto-coluna">
+                <div class="sobre-foto-moldura">
+                    <img src="foto.jpeg" alt="Gili Girardi - Terapeuta Holística" class="sobre-foto" loading="lazy" width="1023" height="1537">
+                </div>
+            </div>
+
+            <div class="sobre-texto-coluna">
+                <div class="sobre-icone" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 2L13.8 8.8L20.6 10.6L13.8 12.4L12 19.2L10.2 12.4L3.4 10.6L10.2 8.8L12 2Z" />
+                    </svg>
+                </div>
+
+                <h2 class="sobre-titulo">Sobre</h2>
+
+                <div class="sobre-bio">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+                    <p>
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                    <p>
+                        Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris.
+                    </p>
+                </div>
+
+                <div class="sobre-acoes">
+                    <a href="https://wa.me/5547920044791" target="_blank" rel="noopener" class="botao-sobre">
+                        <span>Entre em contato</span>
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M5 12h14M12 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Transição suave entre Sobre e Serviços -->
+    <div class="divisao-secao divisao-para-papel" aria-hidden="true">
+        <svg class="divisao-curva" viewBox="0 0 1440 60" preserveAspectRatio="none">
+            <path d="M0,0 C480,48 960,48 1440,0 L1440,60 L0,60 Z" fill="#F7F2EA"></path>
+        </svg>
+    </div>
+
+    <!-- Seção Serviços com fundo papel (#F7F2EA) -->
+    <section id="servicos" class="secao-servicos">
+        <div class="servicos-container">
+            <div class="servicos-cabecalho">
+                <div class="sobre-icone" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 2L13.8 8.8L20.6 10.6L13.8 12.4L12 19.2L10.2 12.4L3.4 10.6L10.2 8.8L12 2Z" />
+                    </svg>
+                </div>
+                <h2 class="servicos-titulo">Serviços</h2>
+                <p class="servicos-subtitulo">Atendimentos Terapêuticos e Leituras</p>
+            </div>
+
+            <div class="servicos-grid">
+                <!-- 1. Astrologia (Card em destaque com os 3 subitens) -->
+                <article class="servico-card servico-card-destaque">
+                    <div class="servico-card-header">
+                        <h3 class="servico-nome">Astrologia</h3>
+                    </div>
+                    <div class="servico-subitens-grid">
+                        <div class="servico-subitem-card">
+                            <h4 class="subitem-titulo">Mapa Natal</h4>
+                            <p class="subitem-texto">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        </div>
+                        <div class="servico-subitem-card">
+                            <h4 class="subitem-titulo">Revolução Solar</h4>
+                            <p class="subitem-texto">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        </div>
+                        <div class="servico-subitem-card">
+                            <h4 class="subitem-titulo">Sinastria</h4>
+                            <p class="subitem-texto">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 2. Tarot -->
+                <article class="servico-card">
+                    <div class="servico-card-header">
+                        <h3 class="servico-nome">Tarot</h3>
+                    </div>
+                    <p class="servico-descricao">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio praesent libero sed cursus ante dapibus diam.</p>
+                </article>
+
+                <!-- 3. Radiestesia -->
+                <article class="servico-card">
+                    <div class="servico-card-header">
+                        <h3 class="servico-nome">Radiestesia</h3>
+                    </div>
+                    <p class="servico-descricao">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sodales ligula in libero sed dignissim lacinia nunc.</p>
+                </article>
+
+                <!-- 4. Reiki -->
+                <article class="servico-card">
+                    <div class="servico-card-header">
+                        <h3 class="servico-nome">Reiki</h3>
+                    </div>
+                    <p class="servico-descricao">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum eleifend leo.</p>
+                </article>
+            </div>
+
+            <div class="servicos-acoes">
+                <a href="https://wa.me/5547920044791" target="_blank" rel="noopener" class="botao-sobre">
+                    <span>Agendar Atendimento</span>
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M5 12h14M12 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Transição suave entre Serviços e Feedback -->
+    <div class="divisao-secao divisao-para-lavanda" aria-hidden="true">
+        <svg class="divisao-curva" viewBox="0 0 1440 60" preserveAspectRatio="none">
+            <path d="M0,0 C480,48 960,48 1440,0 L1440,60 L0,60 Z" fill="#B8AFC2"></path>
+        </svg>
+    </div>
+
+    <!-- Seção Feedback com fundo lavanda (#B8AFC2) inspirada em francampara.com -->
+    <section id="feedback" class="secao-feedback">
+        <div class="feedback-container">
+            <div class="feedback-cabecalho">
+                <div class="sobre-icone" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 2L13.8 8.8L20.6 10.6L13.8 12.4L12 19.2L10.2 12.4L3.4 10.6L10.2 8.8L12 2Z" />
+                    </svg>
+                </div>
+                <h2 class="feedback-titulo">Feedback</h2>
+                <p class="feedback-subtitulo">Conheça a experiência de quem já vivenciou os atendimentos</p>
+            </div>
+
+            <div class="feedback-grid">
+                <!-- Card 1 -->
+                <article class="feedback-card">
+                    <div class="feedback-card-topo">
+                        <svg class="feedback-aspas" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <p class="feedback-texto">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."</p>
+                    <div class="feedback-autor">
+                        <strong class="feedback-autor-nome">Nome</strong>
+                        <span class="feedback-autor-servico">Mapa Astral &amp; Revolução Solar</span>
+                    </div>
+                </article>
+
+                <!-- Card 2 -->
+                <article class="feedback-card">
+                    <div class="feedback-card-topo">
+                        <svg class="feedback-aspas" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <p class="feedback-texto">"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+                    <div class="feedback-autor">
+                        <strong class="feedback-autor-nome">Nome</strong>
+                        <span class="feedback-autor-servico">Tarot Terapêutico</span>
+                    </div>
+                </article>
+
+                <!-- Card 3 -->
+                <article class="feedback-card">
+                    <div class="feedback-card-topo">
+                        <svg class="feedback-aspas" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <p class="feedback-texto">"Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris vel feugiat tellus."</p>
+                    <div class="feedback-autor">
+                        <strong class="feedback-autor-nome">Nome</strong>
+                        <span class="feedback-autor-servico">Radiestesia &amp; Reiki</span>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Transição suave entre Feedback e Perguntas Frequentes -->
+    <div class="divisao-secao divisao-para-papel" aria-hidden="true">
+        <svg class="divisao-curva" viewBox="0 0 1440 60" preserveAspectRatio="none">
+            <path d="M0,0 C480,48 960,48 1440,0 L1440,60 L0,60 Z" fill="#F7F2EA"></path>
+        </svg>
+    </div>
+
+    <!-- Seção Perguntas Frequentes (tom claro #F7F2EA - inspirada em nataliasanchez.com.br) -->
+    <section id="faq" class="secao-faq">
+        <div class="faq-container">
+            <div class="faq-cabecalho">
+                <div class="sobre-icone" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 2L13.8 8.8L20.6 10.6L13.8 12.4L12 19.2L10.2 12.4L3.4 10.6L10.2 8.8L12 2Z" />
+                    </svg>
+                </div>
+                <h2 class="faq-titulo">Perguntas Frequentes</h2>
+                <p class="faq-subtitulo">Tire suas dúvidas antes de dar o próximo passo</p>
+            </div>
+
+            <div class="faq-lista">
+                <!-- Pergunta 1 -->
+                <details name="faq" class="faq-item">
+                    <summary class="faq-pergunta">
+                        <span>Preciso de ajuda e não sei por onde começar. Como escolho meu atendimento?</span>
+                        <svg class="faq-icone-seta" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </summary>
+                    <div class="faq-resposta">
+                        <p>Se você busca um autoconhecimento profundo sobre quem você é, seus potenciais e ciclos de vida, o <strong>Mapa Natal</strong> é o ponto de partida ideal. Se você tem dúvidas pontuais sobre um momento específico ou decisões a tomar, o <strong>Tarot</strong> traz clareza imediata. Para harmonização e equilíbrio energético, a <strong>Radiestesia</strong> e o <strong>Reiki</strong> são indicados. Caso ainda tenha dúvidas, você pode me chamar no WhatsApp que conversamos e eu te oriento para o melhor atendimento para o seu momento.</p>
+                    </div>
+                </details>
+
+                <!-- Pergunta 2 -->
+                <details name="faq" class="faq-item">
+                    <summary class="faq-pergunta">
+                        <span>Os atendimentos são online ou presenciais?</span>
+                        <svg class="faq-icone-seta" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </summary>
+                    <div class="faq-resposta">
+                        <p>Os atendimentos são realizados principalmente de forma <strong>online</strong>, via videochamada, com a mesma profundidade e acolhimento, permitindo que você participe do conforto da sua casa, onde quer que esteja. Havendo disponibilidade para atendimentos presenciais, alinhamos diretamente no momento do agendamento.</p>
+                    </div>
+                </details>
+
+                <!-- Pergunta 3 -->
+                <details name="faq" class="faq-item">
+                    <summary class="faq-pergunta">
+                        <span>As terapias preveem o futuro?</span>
+                        <svg class="faq-icone-seta" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </summary>
+                    <div class="faq-resposta">
+                        <p>Não. O olhar é terapêutico, de autoconhecimento e desenvolvimento consciente. A Astrologia e o Tarot revelam tendências, padrões inconscientes e potenciais energéticos, mas o seu livre-arbítrio e suas decisões são sempre soberanos. O propósito é iluminar caminhos para que você faça escolhas com mais clareza e autonomia.</p>
+                    </div>
+                </details>
+
+                <!-- Pergunta 4 -->
+                <details name="faq" class="faq-item">
+                    <summary class="faq-pergunta">
+                        <span>Como faço para agendar um atendimento?</span>
+                        <svg class="faq-icone-seta" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </summary>
+                    <div class="faq-resposta">
+                        <p>O agendamento é feito de forma simples e direta pelo <strong>WhatsApp</strong>. Basta clicar em qualquer botão de contato do site para combinarmos o melhor dia, horário e esclarecer qualquer dúvida prévia.</p>
+                    </div>
+                </details>
+
+                <!-- Pergunta 5 -->
+                <details name="faq" class="faq-item">
+                    <summary class="faq-pergunta">
+                        <span>Como recebo meu atendimento?</span>
+                        <svg class="faq-icone-seta" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </summary>
+                    <div class="faq-resposta">
+                        <p>No dia e horário marcados, nos encontramos ao vivo em uma sessão por videochamada. Após a sessão, você também recebe a gravação do encontro e/ou um material em PDF com o seu mapa e orientações personalizadas para revisitar sempre que quiser.</p>
+                    </div>
+                </details>
+
+                <!-- Pergunta 6 -->
+                <details name="faq" class="faq-item">
+                    <summary class="faq-pergunta">
+                        <span>Quais são as formas de pagamento?</span>
+                        <svg class="faq-icone-seta" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </summary>
+                    <div class="faq-resposta">
+                        <p>O pagamento pode ser realizado via <strong>Pix</strong> ou <strong>cartão de crédito</strong> (através de link de pagamento seguro). A confirmação do agendamento é feita mediante o envio do comprovante antes da realização do atendimento.</p>
+                    </div>
+                </details>
+            </div>
+
+            <div class="faq-contato">
+                <p class="faq-contato-texto">Ainda tem alguma dúvida? Fale comigo diretamente:</p>
+                <a href="https://wa.me/5547920044791" target="_blank" rel="noopener" class="botao-sobre">
+                    <span>Tirar dúvidas no WhatsApp</span>
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M5 12h14M12 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Transição suave entre FAQ e Contato -->
+    <div class="divisao-secao divisao-para-lavanda" aria-hidden="true">
+        <svg class="divisao-curva" viewBox="0 0 1440 60" preserveAspectRatio="none">
+            <path d="M0,0 C480,48 960,48 1440,0 L1440,60 L0,60 Z" fill="#B8AFC2"></path>
+        </svg>
+    </div>
+
+    <!-- Seção Contato / Rodapé com fundo lavanda (#B8AFC2) -->
+    <footer id="contato" class="secao-contato">
+        <div class="contato-container">
+            <div class="sobre-icone" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 2L13.8 8.8L20.6 10.6L13.8 12.4L12 19.2L10.2 12.4L3.4 10.6L10.2 8.8L12 2Z" />
+                </svg>
+            </div>
+            <h2 class="contato-titulo">Contato</h2>
+            <p class="contato-subtitulo">Vamos conversar? Me encontre por aqui</p>
+
+            <div class="contato-links">
+                <!-- WhatsApp -->
+                <a href="https://wa.me/5547920044791" target="_blank" rel="noopener" class="contato-item">
+                    <svg class="contato-item-icone" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" fill="currentColor"/>
+                    </svg>
+                    <div class="contato-item-info">
+                        <span class="contato-item-label">WhatsApp</span>
+                        <span class="contato-item-detalhe">(47) 92004-4791</span>
+                    </div>
+                </a>
+
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/a.sementestelar/" target="_blank" rel="noopener" class="contato-item">
+                    <svg class="contato-item-icone" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" fill="currentColor"/>
+                    </svg>
+                    <div class="contato-item-info">
+                        <span class="contato-item-label">Instagram</span>
+                        <span class="contato-item-detalhe">@a.sementestelar</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="contato-rodape">
+                <span>© 2026 Tiago Berwanger</span>
+                <span class="rodape-separador" aria-hidden="true">·</span>
+                <a href="https://github.com/tiagoberwanger" target="_blank" rel="noopener noreferrer" class="rodape-github" aria-label="GitHub de Tiago Berwanger" title="GitHub de Tiago Berwanger">
+                    <svg class="rodape-github-icone" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill="currentColor" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
 </body>
 </html>
