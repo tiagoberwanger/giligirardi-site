@@ -1,6 +1,6 @@
 :root {
     color-scheme: light;
-    --papel: #f2ede3;
+    --papel: #F7F2EA;
     --tinta: #1f1d2b;
     --tinta-suave: #5a5568;
     --violeta: #5b4f8c;
@@ -38,7 +38,7 @@ body {
     justify-content: center;
     min-height: 100vh;
     min-height: 100svh;
-    padding: 24px 16px 80px;
+    padding: 24px 16px;
     animation: surgir 1.4s ease-out both;
 }
 
@@ -83,9 +83,10 @@ h1 {
     transform: translate(-50%, -50%);
     color: var(--papel);
     font-family: "Gilda Display", Georgia, serif;
-    font-size: calc(var(--tamanho) * 0.078);
+    font-size: calc(var(--tamanho) * 0.095);
     font-weight: 400;
-    line-height: 1.04;
+    line-height: 1.08;
+    text-align: center;
     white-space: nowrap;
     filter: drop-shadow(0 1px 12px rgba(36, 32, 63, 0.6));
 }
@@ -109,13 +110,6 @@ h1 {
     }
 }
 
-.nome {
-    margin: calc(var(--tamanho) * -0.03) 0 0;
-    font-family: "Gilda Display", Georgia, serif;
-    font-size: clamp(1.5rem, calc(var(--tamanho) * 0.055), 2.4rem);
-    line-height: 1.2;
-}
-
 /* Estrelinhas no lugar dos pingos dos "i", como no cartão */
 .pingo {
     position: relative;
@@ -129,7 +123,7 @@ h1 {
     width: 0.3em;
     height: 0.3em;
     transform: translateX(-50%);
-    background: currentColor;
+    background: var(--papel);
     clip-path: polygon(50% 0, 59% 41%, 100% 50%, 59% 59%, 50% 100%, 41% 59%, 0 50%, 41% 41%);
 }
 
