@@ -61,6 +61,10 @@ body {
     height: 100%;
     pointer-events: none;
     opacity: 0.9;
+    /* Isola a camada SVG para evitar repaints no WebKit/iOS */
+    contain: strict;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
 }
 
 #ceu {
@@ -69,6 +73,10 @@ body {
     width: 100%;
     height: 100%;
     pointer-events: none;
+    /* Força aceleração por GPU no canvas e previne engasgos no WebKit/iOS */
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    will-change: transform;
 }
 
 .abertura-conteudo {
@@ -104,7 +112,7 @@ h1 {
 
 .linha-nome,
 .linha-sobrenome {
-    display: inline-block;
+    display: block;
 }
 
 .abertura-subtitulo {
