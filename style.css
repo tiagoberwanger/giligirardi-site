@@ -128,10 +128,10 @@ h1 {
 }
 
 .abertura-servicos {
-    font-size: clamp(0.85rem, 1.4vw, 1rem);
+    font-size: clamp(0.8rem, 1.3vw, 0.95rem);
     color: #c4b5eb;
-    letter-spacing: 0.12em;
-    text-transform: lowercase;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
     margin: 0;
     opacity: 0.85;
     filter: drop-shadow(0 1px 8px rgba(15, 10, 30, 0.75));
@@ -156,21 +156,43 @@ h1 {
     }
 }
 
-/* Estrelinhas no lugar dos pingos dos "i", como no cartão */
-.pingo {
+/* Letra "i" com máscara opaca cobrindo o pingo original e estrela vetorial */
+.letra-i {
     position: relative;
+    display: inline-block;
+    vertical-align: baseline;
 }
 
-.pingo::before {
-    content: "";
+.i-corpo {
+    display: inline-block;
+}
+
+/* Máscara sólida na cor do céu de fundo que cobre 100% do pingo redondo original do "i" */
+.pingo-mascara {
     position: absolute;
     left: 50%;
-    top: -0.05em;
+    top: 0.16em;
+    width: 0.44em;
+    height: 0.28em;
+    transform: translate(-50%, -50%);
+    background: #292248;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Estrela vetorial de 4 pontas no lugar exato do pingo */
+.estrela-pingo {
+    position: absolute;
+    left: 50%;
+    top: 0.16em;
     width: 0.28em;
     height: 0.28em;
-    transform: translateX(-50%);
-    background: var(--papel);
-    clip-path: polygon(50% 0, 59% 41%, 100% 50%, 59% 59%, 50% 100%, 41% 59%, 0 50%, 41% 41%);
+    transform: translate(-50%, -50%);
+    fill: var(--papel);
+    pointer-events: none;
+    z-index: 2;
+    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.7));
 }
 
 .descer {
@@ -259,20 +281,88 @@ h1 {
 .sobre-foto-coluna {
     display: flex;
     justify-content: center;
+    position: relative;
+    padding: 28px 24px;
 }
 
-.sobre-foto-moldura {
+.sobre-foto-container {
     position: relative;
     width: 100%;
-    max-width: 420px;
-    border-radius: 28px;
-    overflow: hidden;
-    box-shadow:
-        0 24px 48px -12px rgba(35, 31, 50, 0.3),
-        0 4px 16px -2px rgba(35, 31, 50, 0.12);
-    border: 1px solid rgba(255, 255, 255, 0.45);
-    background: #A597CF;
+    max-width: 370px;
     aspect-ratio: 2 / 3;
+}
+
+/* Camadas do deck de cartas de Tarot empilhadas por baixo */
+.carta-deck {
+    position: absolute;
+    inset: 0;
+    border-radius: 2rem;
+    pointer-events: none;
+    overflow: hidden;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.6s ease;
+}
+
+/* Carta inferior do deck (carta-taro-2) - imagem inteira, muito sutil, quase desaparecendo */
+.carta-fundo-2 {
+    z-index: 1;
+    background-image: url('carta-taro-2.jpeg');
+    opacity: 0.22;
+    transform: rotate(-7deg) translate(-24px, 10px);
+    -webkit-transform: rotate(-7deg) translate(-24px, 10px);
+    box-shadow: 0 8px 20px -8px rgba(35, 31, 50, 0.12);
+}
+
+/* Carta intermediária do deck (carta-taro-1) - imagem inteira, muito sutil, quase desaparecendo */
+.carta-fundo-1 {
+    z-index: 2;
+    background-image: url('carta-taro-1.jpeg');
+    opacity: 0.26;
+    transform: rotate(6deg) translate(22px, -6px);
+    -webkit-transform: rotate(6deg) translate(22px, -6px);
+    box-shadow: 0 10px 22px -8px rgba(35, 31, 50, 0.14);
+}
+
+/* A foto principal é a primeira carta puxada do topo do deck */
+.sobre-foto-moldura {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+    border-radius: 2rem;
+    overflow: hidden;
+    transform: rotate(-0.5deg);
+    -webkit-transform: rotate(-0.5deg);
+    box-shadow:
+        0 24px 46px -10px rgba(35, 31, 50, 0.35),
+        0 8px 18px -2px rgba(35, 31, 50, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    background: #A597CF;
+    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.6s ease;
+}
+
+/* Efeito suave ao passar o mouse: leve ganho de presença sem perder a sutileza */
+.sobre-foto-container:hover .carta-fundo-2 {
+    opacity: 0.32;
+    transform: rotate(-9deg) translate(-32px, 14px) scale(1.01);
+    -webkit-transform: rotate(-9deg) translate(-32px, 14px) scale(1.01);
+}
+
+.sobre-foto-container:hover .carta-fundo-1 {
+    opacity: 0.36;
+    transform: rotate(7.5deg) translate(30px, -8px) scale(1.01);
+    -webkit-transform: rotate(7.5deg) translate(30px, -8px) scale(1.01);
+}
+
+.sobre-foto-container:hover .sobre-foto-moldura {
+    transform: rotate(-1deg) translate(0, -8px) scale(1.015);
+    -webkit-transform: rotate(-1deg) translate(0, -8px) scale(1.015);
+    box-shadow:
+        0 30px 54px -12px rgba(35, 31, 50, 0.42),
+        0 10px 22px -3px rgba(35, 31, 50, 0.18);
 }
 
 .sobre-foto {
@@ -284,8 +374,8 @@ h1 {
     transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.sobre-foto-moldura:hover .sobre-foto {
-    transform: scale(1.025);
+.sobre-foto-container:hover .sobre-foto {
+    transform: scale(1.02);
 }
 
 /* Coluna de Conteúdo / Texto */

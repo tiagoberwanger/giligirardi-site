@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=8">
     <script src="script.js" defer></script>
 </head>
 <body>
@@ -73,14 +73,14 @@
 
         <div class="abertura-conteudo">
             <h1 class="brilho">
-                <span class="linha-nome">Gili</span>
-                <span class="linha-sobrenome">Girardi</span>
+                <span class="linha-nome">G<span class="letra-i"><span class="i-corpo">i</span><span class="pingo-mascara" aria-hidden="true"></span><svg class="estrela-pingo" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0 L14.2 9.8 L24 12 L14.2 14.2 L12 24 L9.8 14.2 L0 12 L9.8 9.8 Z" /></svg></span>l<span class="letra-i"><span class="i-corpo">i</span><span class="pingo-mascara" aria-hidden="true"></span><svg class="estrela-pingo" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0 L14.2 9.8 L24 12 L14.2 14.2 L12 24 L9.8 14.2 L0 12 L9.8 9.8 Z" /></svg></span></span>
+                <span class="linha-sobrenome">G<span class="letra-i"><span class="i-corpo">i</span><span class="pingo-mascara" aria-hidden="true"></span><svg class="estrela-pingo" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0 L14.2 9.8 L24 12 L14.2 14.2 L12 24 L9.8 14.2 L0 12 L9.8 9.8 Z" /></svg></span>rard<span class="letra-i"><span class="i-corpo">i</span><span class="pingo-mascara" aria-hidden="true"></span><svg class="estrela-pingo" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0 L14.2 9.8 L24 12 L14.2 14.2 L12 24 L9.8 14.2 L0 12 L9.8 9.8 Z" /></svg></span></span>
             </h1>
             <p class="abertura-subtitulo">Terapeuta Holística</p>
-            <p class="abertura-servicos">astrologia - tarot - radiestesia - reiki</p>
+            <p class="abertura-servicos">astrologia • tarot • radiestesia • reiki</p>
         </div>
 
-        <a class="descer" href="#sobre" aria-label="Rolar para a seção sobre">
+        <a class="descer" href="#servicos" aria-label="Rolar para a seção serviços">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg>
         </a>
     </header>
@@ -96,8 +96,13 @@
     <section id="sobre" class="secao-sobre">
         <div class="sobre-container">
             <div class="sobre-foto-coluna">
-                <div class="sobre-foto-moldura">
-                    <img src="foto.jpeg" alt="Gili Girardi - Terapeuta Holística" class="sobre-foto" loading="lazy" width="1023" height="1537">
+                <div class="sobre-foto-container">
+                    <!-- Efeito de deck de cartas de Tarot: cartas empilhadas por baixo -->
+                    <div class="carta-deck carta-fundo-2" aria-hidden="true"></div>
+                    <div class="carta-deck carta-fundo-1" aria-hidden="true"></div>
+                    <div class="sobre-foto-moldura">
+                        <img src="foto.jpeg" alt="Gili Girardi - Terapeuta Holística" class="sobre-foto" loading="lazy" width="1023" height="1537">
+                    </div>
                 </div>
             </div>
 
@@ -112,13 +117,13 @@
 
                 <div class="sobre-bio">
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        Olá, sou a Gili! Desde sempre apaixonada pelos astros e cristais. Hoje, sou terapeuta holística e trabalho com Astrologia Humanista, Tarot Terapêutico, Radiestesia Terapêutica e Reiki.
                     </p>
                     <p>
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        Minha trajetória passou por muitas transformações até eu entender que meu caminho profissional também poderia ser um caminho de propósito. Hoje, foco em tornar o autoconhecimento mais acessível, ajudando pessoas a compreenderem seus momentos de vida, ampliarem a consciência sobre si mesmas e encontrarem novas perspectivas para suas jornadas.
                     </p>
                     <p>
-                        Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris.
+                        Acredito que as terapias são ferramentas de reconexão: não para dizer quem devemos ser, mas para nos ajudar a reconhecer quem já somos.
                     </p>
                 </div>
 
@@ -163,15 +168,15 @@
                     <div class="servico-subitens-grid">
                         <div class="servico-subitem-card">
                             <h4 class="subitem-titulo">Mapa Natal</h4>
-                            <p class="subitem-texto">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            <p class="subitem-texto">Uma análise profunda do seu mapa astral para compreender sua personalidade, potenciais, desafios, talentos e propósito de vida.</p>
                         </div>
                         <div class="servico-subitem-card">
                             <h4 class="subitem-titulo">Revolução Solar</h4>
-                            <p class="subitem-texto">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                            <p class="subitem-texto">Leitura do ciclo do seu novo ano astrológico, revelando tendências, oportunidades e temas que estarão em destaque nos próximos 12 meses.</p>
                         </div>
                         <div class="servico-subitem-card">
                             <h4 class="subitem-titulo">Sinastria</h4>
-                            <p class="subitem-texto">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                            <p class="subitem-texto">Análise da dinâmica entre dois mapas astrais, explorando afinidades, desafios, aprendizados e potenciais da relação.</p>
                         </div>
                     </div>
                 </article>
@@ -181,7 +186,7 @@
                     <div class="servico-card-header">
                         <h3 class="servico-nome">Tarot</h3>
                     </div>
-                    <p class="servico-descricao">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio praesent libero sed cursus ante dapibus diam.</p>
+                    <p class="servico-descricao">É uma ferramenta de autoconhecimento que utiliza os símbolos e arquétipos das cartas para promover reflexões sobre emoções, padrões de comportamento e situações da vida. Auxilia na identificação de desafios, na ampliação da consciência e na compreensão de diferentes caminhos e possibilidades.</p>
                 </article>
 
                 <!-- 3. Radiestesia -->
@@ -189,7 +194,7 @@
                     <div class="servico-card-header">
                         <h3 class="servico-nome">Radiestesia</h3>
                     </div>
-                    <p class="servico-descricao">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sodales ligula in libero sed dignissim lacinia nunc.</p>
+                    <p class="servico-descricao">É uma técnica de avaliação energética que auxilia na identificação de desequilíbrios e bloqueios que podem estar influenciando diferentes áreas da vida. A partir da análise, são indicados recursos terapêuticos personalizados para promover maior equilíbrio e bem-estar.</p>
                 </article>
 
                 <!-- 4. Reiki -->
@@ -197,7 +202,7 @@
                     <div class="servico-card-header">
                         <h3 class="servico-nome">Reiki</h3>
                     </div>
-                    <p class="servico-descricao">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum eleifend leo.</p>
+                    <p class="servico-descricao">É uma terapia integrativa que utiliza a imposição de mãos para canalizar energia vital, buscando promover equilíbrio energético, relaxamento e bem-estar. Auxilia no alívio de tensões, na harmonização dos centros energéticos (chakras) e no cuidado integral do corpo, da mente e das emoções.</p>
                 </article>
             </div>
 
@@ -240,10 +245,9 @@
                             <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" fill="currentColor"/>
                         </svg>
                     </div>
-                    <p class="feedback-texto">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."</p>
+                    <p class="feedback-texto">"Gili, muito obrigada pelas tantas informações, fiquei impressionada! Não imaginei tanta profundidade pelo preço que você colocou, pensei que seria algo mais simples.<br><br>Com certeza isso vale muito mais, então esse teu serviço de MR é um verdadeiro presente!<br><br>Muito obrigada também por essa oportunidade de conhecer melhor o teu trabalho. Ficou tudo muito claro e estruturado nos materiais que você enviou. Tem bastante coisa para considerar, e as sugestões são muito valiosas. Adorei!"</p>
                     <div class="feedback-autor">
-                        <strong class="feedback-autor-nome">Nome</strong>
-                        <span class="feedback-autor-servico">Mapa Astral &amp; Revolução Solar</span>
+                        <span class="feedback-autor-servico">Astrologia</span>
                     </div>
                 </article>
 
@@ -254,10 +258,9 @@
                             <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" fill="currentColor"/>
                         </svg>
                     </div>
-                    <p class="feedback-texto">"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+                    <p class="feedback-texto">"Ahhh Gili, sem palavras para você. Nada é por acaso, eu ter encontrado seu perfil, conhecer o seu trabalho. Eu até falei para minha mãe, não basta fazer o curso aprender a tiragem, mas a interpretação que você faz de cada carta a gente sente que é muito prudente, transmite confiança, você sabe exatamente o que está lendo, e a energia do campo não mente né? Bateu tudo mais uma vez.<br><br>Obrigada, você nos inspira a ouvir o chamado para aquilo que é nossa missão e abraçá-lo."</p>
                     <div class="feedback-autor">
-                        <strong class="feedback-autor-nome">Nome</strong>
-                        <span class="feedback-autor-servico">Tarot Terapêutico</span>
+                        <span class="feedback-autor-servico">Tarot</span>
                     </div>
                 </article>
 
@@ -268,10 +271,9 @@
                             <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" fill="currentColor"/>
                         </svg>
                     </div>
-                    <p class="feedback-texto">"Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris vel feugiat tellus."</p>
+                    <p class="feedback-texto">"Gili, não sei nem explicar. Na sexta tava muito angustiada por conta da minha situação no trabalho. Na sessão senti uma sensação bem doida, as mãos formigaram, senti o corpo todo esquentando e chorei bastante, mas sabia que estava liberando o que eu precisava. Hoje acordei com o peito leve e uma sensação de paz incrível. Obrigada de coração por esse momento."</p>
                     <div class="feedback-autor">
-                        <strong class="feedback-autor-nome">Nome</strong>
-                        <span class="feedback-autor-servico">Radiestesia &amp; Reiki</span>
+                        <span class="feedback-autor-servico">Reiki</span>
                     </div>
                 </article>
             </div>
@@ -308,7 +310,7 @@
                         </svg>
                     </summary>
                     <div class="faq-resposta">
-                        <p>Se você busca um autoconhecimento profundo sobre quem você é, seus potenciais e ciclos de vida, o <strong>Mapa Natal</strong> é o ponto de partida ideal. Se você tem dúvidas pontuais sobre um momento específico ou decisões a tomar, o <strong>Tarot</strong> traz clareza imediata. Para harmonização e equilíbrio energético, a <strong>Radiestesia</strong> e o <strong>Reiki</strong> são indicados. Caso ainda tenha dúvidas, você pode me chamar no WhatsApp que conversamos e eu te oriento para o melhor atendimento para o seu momento.</p>
+                        <p>Se você busca um autoconhecimento profundo sobre quem você é, seus potenciais e ciclos de vida, a Astrologia é o ponto de partida ideal. Se você tem dúvidas pontuais sobre um momento específico ou decisões a tomar, o Tarot traz clareza imediata. Para harmonização e equilíbrio energético, a Radiestesia e o Reiki são indicados. Caso ainda tenha dúvidas, você pode me chamar no WhatsApp que conversamos e eu te oriento para o melhor atendimento para o seu momento.</p>
                     </div>
                 </details>
 
@@ -321,7 +323,7 @@
                         </svg>
                     </summary>
                     <div class="faq-resposta">
-                        <p>Os atendimentos são realizados principalmente de forma <strong>online</strong>, via videochamada, com a mesma profundidade e acolhimento, permitindo que você participe do conforto da sua casa, onde quer que esteja. Havendo disponibilidade para atendimentos presenciais, alinhamos diretamente no momento do agendamento.</p>
+                        <p>Os atendimentos são realizados somente de forma online, o envio é feito pelo whatsapp com áudios, fotos e arquivos em PDF com todas as informações para você rever sempre que sentir necessidade.</p>
                     </div>
                 </details>
 
@@ -360,7 +362,7 @@
                         </svg>
                     </summary>
                     <div class="faq-resposta">
-                        <p>No dia e horário marcados, nos encontramos ao vivo em uma sessão por videochamada. Após a sessão, você também recebe a gravação do encontro e/ou um material em PDF com o seu mapa e orientações personalizadas para revisitar sempre que quiser.</p>
+                        <p>Após o pagamento e no dia combinado você recebe todo o material via whatsapp.</p>
                     </div>
                 </details>
 
