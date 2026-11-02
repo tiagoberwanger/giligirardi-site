@@ -156,43 +156,78 @@ h1 {
     }
 }
 
-/* Letra "i" com máscara opaca cobrindo o pingo original e estrela vetorial */
+/* Título geral */
+.titulo {
+    margin: 0;
+    font-family: "Gilda Display", Georgia, serif;
+    font-size: clamp(3.4rem, 11vw, 8.6rem);
+    font-weight: 400;
+    line-height: 0.96;
+    text-align: center;
+    letter-spacing: -0.02em;
+    filter: drop-shadow(0 2px 24px rgba(15, 10, 30, 0.9));
+    user-select: none;
+}
+
+/* O gradiente fica APENAS nas letras sem filhos absolutos */
+.brilho {
+    background: linear-gradient(100deg,
+        var(--papel) 0%,
+        var(--papel) 38%,
+        var(--lavanda-clara) 46%,
+        #ffffff 50%,
+        var(--lavanda-clara) 54%,
+        var(--papel) 62%,
+        var(--papel) 100%);
+    background-size: 250% 100%;
+    background-position: 100% 0;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: brilho 6s ease-in-out infinite;
+}
+
+/* A letra 'i' fica com cor sólida (sem transparência nem background-clip) */
 .letra-i {
     position: relative;
     display: inline-block;
     vertical-align: baseline;
+    color: var(--papel); /* Cor sólida garantida no iOS */
+}
+
+/* Estrela alinhada como pingo */
+.estrela-pingo {
+    position: absolute;
+    left: 50%;
+    top: -0.15em;
+    width: 0.35em;
+    height: 0.35em;
+    transform: translateX(-50%);
+    fill: var(--papel);
+    pointer-events: none;
+    z-index: 2;
+    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.7));
 }
 
 .i-corpo {
     display: inline-block;
+    /* Força o WebKit a rasterizar o texto corretamente junto com o gradiente */
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
 }
 
 /* Máscara sólida na cor do céu de fundo que cobre 100% do pingo redondo original do "i" */
 .pingo-mascara {
     position: absolute;
     left: 50%;
-    top: 0.16em;
-    width: 0.44em;
-    height: 0.28em;
+    top: 0.12em;
+    width: 0.38em;
+    height: 0.38em;
     transform: translate(-50%, -50%);
-    background: #292248;
+    background: #221c38; /* Cor de fundo fechada para tapar o pingo */
     border-radius: 50%;
     pointer-events: none;
     z-index: 1;
-}
-
-/* Estrela vetorial de 4 pontas no lugar exato do pingo */
-.estrela-pingo {
-    position: absolute;
-    left: 50%;
-    top: 0.16em;
-    width: 0.28em;
-    height: 0.28em;
-    transform: translate(-50%, -50%);
-    fill: var(--papel);
-    pointer-events: none;
-    z-index: 2;
-    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.7));
 }
 
 .descer {
